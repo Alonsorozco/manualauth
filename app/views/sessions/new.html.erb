@@ -1,0 +1,31 @@
+<h1>Iniciar Session</h1>
+
+<%= form_with(model: @user , url: sessions_path, local: true) do |f| %>
+    <% if @user.errors.any? %>
+        <div id = 'error_explanation'>
+            <h2>Este  no se pudo crear por las siguientes razones</h2>
+            <ul>
+                <% @user.errors.full_messages.each do |msg|%>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+     <%# email para inicia session %>
+    <div class="form-group"> 
+        <%= f.label :email, "Email" %>
+        <%= f.email_field :email, class:'form-control'%>
+    </div>
+    <%# password para iniciar session %>
+    <div class="form-group"> 
+        <%= f.label :password %>
+        <%= f.password_field :password, class:'form-control'%>
+    </div>
+
+
+
+    <div class = 'actions'>
+        <%= f.submit"Iniciar Session" %>
+    </div>
+<% end %>
